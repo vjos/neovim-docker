@@ -1,0 +1,8 @@
+services:
+  neovim:
+    build: .
+    volumes: 
+      - ${HOME}:${HOME} 
+    stdin_open: true
+    tty: true
+    
