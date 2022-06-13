@@ -1,20 +1,29 @@
-FROM alpine:3.16.0
+FROM ubuntu:22.10
 
 # generic dependencies
-RUN apk update && apk add neovim neovim-doc curl git
+RUN apt-get update
+RUN apt-get install curl git -y
+
+# install neovim
+RUN apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
+RUN git clone https://github.com/neovim/neovim.git /tmp/neovim
+WORKDIR /tmp/neovim
+RUN make CMAKE_BUILD_TYPE=RelWithDebInfo
+RUN make install
+WORKDIR /
 
 # js deps required for coc
-RUN apk add nodejs npm
+RUN apt-get install nodejs npm -y
 
 # python deps 
-RUN apk add python3 py3-pip
+RUN apt-get install python3 python3-pip python3.10-venv -y
 RUN python3 -m pip install --user --upgrade pynvim
 
 # C# deps
-RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
-    apk add --no-cache --virtual=.build-dependencies ca-certificates && \
-    cert-sync /etc/ssl/certs/ca-certificates.crt && \
-    apk del .build-dependencies
+RUN apt-get install dirmngr gnupg apt-transport-https ca-certificates software-properties-common -y
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+RUN apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
+RUN apt install mono-complete -y
 
 # install config and packages
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \

@@ -22,11 +22,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 
 " visual plugins
-Plug 'rebelot/kanagawa.nvim'
+Plug 'ap/vim-css-color'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
+Plug 'rebelot/kanagawa.nvim'
 call plug#end()
 
 " config that plugins depend on:
@@ -79,19 +80,18 @@ let g:ale_linters = {
   \ 'cs': ['OmniSharp']
   \}
 
-" use <tab> for trigger completion and navigate to the next complete item
+" tab, shift-tab and enter to control autocompletion
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
 inoremap <silent><expr> <Tab>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\    <CR>" :
+      \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 let g:coc_snippet_next = '<tab>'
 
