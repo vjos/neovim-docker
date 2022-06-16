@@ -19,6 +19,9 @@ RUN apt-get install nodejs npm -y
 RUN apt-get install python3 python3-pip python3.10-venv -y
 RUN python3 -m pip install --user --upgrade pynvim
 
+# go deps
+RUN apt-get install golang-go -y
+
 # C# deps
 RUN apt-get install dirmngr gnupg apt-transport-https ca-certificates software-properties-common -y
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -39,6 +42,7 @@ RUN nvim -c PlugInstall -c qa
 # better way is to use the json file to handle extensions but haven't done this yet
 ARG CocExtensions="coc-snippets\
 	coc-jedi\
+	coc-go\
 	coc-sh\
 	coc-html coc-htmlhint coc-emmet coc-json coc-prettier\
 	coc-css coc-html-css-support"
