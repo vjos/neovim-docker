@@ -5,18 +5,29 @@ dependencies on a host machine.
 ## Usage
 - Install docker with docker-compose
 - Run the compose script to build and start the container: `./compose.sh`
-- Attach to the container's shell: `docker-compose exec neovim /bin/sh`
 - Note that some coc-extensions, such as coc-jedi (for python), will handle
   language server installation themselves. In these cases, you may have to
   enter some commands when prompted.
 
 ## Configuration
-- At present, the Dockerfile curls my init.vim file. This can be changed to any
-  init.vim. Note that github imposes a 5 minute cache on requesting raw files.
-  In future I will change this line and clone my whole .config/nvim directory
-  instead, which will be necessary for some lua plugins.
+- The nvim folder is copied to ~/.config/nvim in the container. This contains
+  all the config files for neovim.
 - You can add language servers by installing coc extensions. You can do this at
   build time by adding to the `CocInstall` command in the Dockerfile. See
   [here](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions)
   for a list of implemented coc extensions. 
 
+## Usage
+Start neovim with `nvim`. Open files: `nvim file.a file.b ...`.
+### Vim
+Learn vim controls with vimtutor. Access the nvim version: `nvim -c Tutor`.
+You can read more in the user manual: `nvim -c h user-manual`.
+### Core Plugins
+There are several main plugins I use. These add extra motions and features to vim:
+- [vim-commentary](https://github.com/tpope/vim-commentary#readme) for toggleable commenting
+- [vim-surround](https://github.com/tpope/vim-surround#readme) adding motions for surroundings such as quotes and parentheses
+- [auto-pairs](https://github.com/jiangmiao/auto-pairs#readme) to gracefully handle matched surroundings
+### Completion
+Coc is a completion ecosystem. See **Configuration** to add more extensions.
+Use <TAB> and <SHIFT-TAB> to navigate completion menus, and <RETURN> to accept.
+See the Dockerfile for preconfigured extensions.

@@ -1,0 +1,5 @@
+{
+	"coc.preferences.formatOnSaveFiletypes": ["html", "css", "javascript", "go"],
+	"snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+	"suggest.noselect": false
+}

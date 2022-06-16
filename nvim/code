@@ -1,0 +1,12 @@
+#!/bin/bash
+SERVERNAME="unityeditor" 
+TERMINALNAME=alacritty
+NVR=/home/jventers/.local/bin/nvr
+
+ISRUNNING=$($NVR --serverlist | grep $SERVERNAME)
+if [ -z $ISRUNNING ]
+then
+  $TERMINALNAME -e $NVR -s --servername $SERVERNAME --remote-silent $@
+else
+  $NVR --servername $SERVERNAME --remote-silent $@
+fi
