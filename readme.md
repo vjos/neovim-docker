@@ -2,6 +2,9 @@
 An attempt to dockerise my Neovim setup, since it hurts to install plugin
 dependencies on a host machine. 
 
+Runs inside an Arch Linux container, which I found to have the most
+dependencies in its repositories (compared to Ubuntu and Alpine).
+
 ## Usage
 - Install docker with docker-compose
 - Run the compose script to build and start the container: `./compose.sh`
@@ -23,11 +26,16 @@ Start neovim with `nvim`. Open files: `nvim file.a file.b ...`.
 Learn vim controls with vimtutor. Access the nvim version: `nvim -c Tutor`.
 You can read more in the user manual: `nvim -c h user-manual`.
 ### Core Plugins
-There are several main plugins I use. These add extra motions and features to vim:
-- [vim-commentary](https://github.com/tpope/vim-commentary#readme) for toggleable commenting
-- [vim-surround](https://github.com/tpope/vim-surround#readme) adding motions for surroundings such as quotes and parentheses
-- [auto-pairs](https://github.com/jiangmiao/auto-pairs#readme) to gracefully handle matched surroundings
+There are several main plugins I use. These add extra motions and features to
+vim:
+- [vim-commentary](https://github.com/tpope/vim-commentary#readme) for
+  toggleable commenting
+- [vim-surround](https://github.com/tpope/vim-surround#readme) adding motions
+  for surroundings such as quotes and parentheses
+- [auto-pairs](https://github.com/jiangmiao/auto-pairs#readme) to gracefully
+  handle matched surroundings
 ### Completion
 Coc is a completion ecosystem. See **Configuration** to add more extensions.
-Use <TAB> and <SHIFT-TAB> to navigate completion menus, and <RETURN> to accept.
+Use <C-n> and <C-p> to navigate completion menus, and <RETURN>/<TAB> to choose
+a suggestion or expand a snippet. 
 See the Dockerfile for preconfigured extensions.

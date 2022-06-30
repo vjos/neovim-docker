@@ -8,10 +8,13 @@ set number relativenumber
 
 " manage plugins with vim-plug
 call plug#begin()
-" core plugins to expand functionality of vim
+" core plugins to expand vim editing
 Plug 'tpope/vim-commentary' " toggle code commenting with selection+gc or gcc
 Plug 'tpope/vim-surround' " adds text-object like interactions for quotes, parens and tags [eg: cs'{]
 Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles indentation
+
+" additional features outside of core editing
+Plug 'ziontee113/color-picker.nvim'
 
 " handle code completion, linting and snippets
 Plug 'mattn/emmet-vim'
@@ -29,6 +32,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'rebelot/kanagawa.nvim'
 call plug#end()
+
+" run init.lua script
+lua require('init')
 
 " config that plugins depend on:
 filetype plugin indent on
@@ -79,6 +85,10 @@ let g:OmniSharp_server_use_mono = 1
 let g:ale_linters = {
   \ 'cs': ['OmniSharp']
   \}
+
+" colour picker config
+nnoremap <C-c> <cmd>PickColor<cr>
+inoremap <C-c> <cmd>PickColorInsert<cr>
 
 " tab, shift-tab and enter to control autocompletion
 function! s:check_back_space() abort
