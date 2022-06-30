@@ -86,13 +86,13 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? "\<C-Y>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
-let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_next = "<Tab>"
+let g:coc_snippet_prev = "<S-Tab>"
 
 colorscheme kanagawa

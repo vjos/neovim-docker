@@ -8,6 +8,7 @@ RUN apt-get install curl git -y
 RUN apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
 RUN git clone https://github.com/neovim/neovim.git /tmp/neovim
 WORKDIR /tmp/neovim
+RUN git checkout release-0.7
 RUN make CMAKE_BUILD_TYPE=RelWithDebInfo
 RUN make install
 WORKDIR /

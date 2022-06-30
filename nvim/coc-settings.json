@@ -1,5 +1,9 @@
 {
 	"coc.preferences.formatOnSaveFiletypes": ["html", "css", "javascript", "go"],
 	"snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
-	"suggest.noselect": false
+	"suggest.noselect": false,
+	"list.insertMappings": {
+                "<C-n>": "normal:j",
+                "<C-p>": "normal:k"
+        }
 }
