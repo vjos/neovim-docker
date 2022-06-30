@@ -30,6 +30,7 @@ RUN nvim -c PlugInstall -c qa
 # install language server extensions for coc
 # better way is to use coc-settings.json file to handle extensions but haven't done this yet
 ARG CocExtensions="coc-snippets\
+	coc-vimlsp\
 	coc-jedi\
 	coc-go\
 	coc-sh\
