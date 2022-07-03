@@ -14,6 +14,7 @@ Plug 'tpope/vim-surround' " adds text-object like interactions for quotes, paren
 Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles indentation
 
 " additional features outside of core editing
+Plug 'folke/zen-mode.nvim'
 Plug 'ziontee113/color-picker.nvim'
 
 " handle code completion, linting and snippets
