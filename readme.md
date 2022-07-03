@@ -39,3 +39,10 @@ Coc is a completion ecosystem. See **Configuration** to add more extensions.
 Use <C-n> and <C-p> to navigate completion menus, and <RETURN>/<TAB> to choose
 a suggestion or expand a snippet. 
 See the Dockerfile for preconfigured extensions.
+
+## Languages
+### Go
+Go has been set up with coc-go with gofumpt. Supports completition, snippets,
+linting and autoformatting. Some features require you to run `go mod init
+<module-name>` first.
+
