@@ -16,6 +16,9 @@ Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles
 " additional features outside of core editing
 Plug 'folke/zen-mode.nvim'
 Plug 'ziontee113/color-picker.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'folke/which-key.nvim'
 
 " handle code completion, linting and snippets
 Plug 'mattn/emmet-vim'
@@ -34,8 +37,13 @@ Plug 'maximbaz/lightline-ale'
 Plug 'rebelot/kanagawa.nvim'
 call plug#end()
 
+" set the leader key (needs to be done before any leader key mappings are made)
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 " run init.lua script
 lua require('init')
+lua require('nvim-tree-conf')
 
 " config that plugins depend on:
 filetype plugin indent on
