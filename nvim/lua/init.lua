@@ -31,3 +31,12 @@ safe_require('zen-mode', {})
 
 -- which-key.nvim config
 safe_require('which-key', {})
+
+-- shade.nvim config
+safe_require('shade', {
+	overlay_opacity = 25,
+	opacity_step = 1,
+	keys = {
+		toggle = '<Leader>s',
+	},
+})

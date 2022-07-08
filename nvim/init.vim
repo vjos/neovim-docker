@@ -34,6 +34,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
+Plug 'sunjon/shade.nvim'
 Plug 'rebelot/kanagawa.nvim'
 call plug#end()
 
@@ -51,7 +52,7 @@ syntax enable
 set tgc
 
 " visual configs
-set laststatus=2
+set laststatus=3 "global status line (see https://www.youtube.com/watch?v=jH5PNvJIa6o)"
 set noshowmode
 set cursorline
 set termguicolors
@@ -111,3 +112,5 @@ let g:coc_snippet_next = "<Tab>"
 let g:coc_snippet_prev = "<S-Tab>"
 
 colorscheme kanagawa
+highlight WinSeparator guibg=None
+
