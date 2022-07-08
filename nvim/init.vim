@@ -95,10 +95,6 @@ let g:ale_linters = {
   \ 'cs': ['OmniSharp']
   \}
 
-" colour picker config
-nnoremap <C-c> <cmd>PickColor<cr>
-inoremap <C-c> <cmd>PickColorInsert<cr>
-
 " tab, shift-tab and enter to control autocompletion
 function! s:check_back_space() abort
   let col = col('.') - 1

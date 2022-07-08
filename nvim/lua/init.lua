@@ -17,6 +17,12 @@ function safe_require(plugin, config)
 	end
 end
 
+
+-- colour picker config
 safe_require('color-picker', {})
+map('n', '<C-c>', '<cmd>PickColor<cr>')
+map('i', '<C-c>', '<cmd>PickColorInsert<cr>')
+
+-- zen mode config
 safe_require('zen-mode', {})
 
