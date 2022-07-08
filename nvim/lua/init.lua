@@ -12,7 +12,10 @@ end
 
 function safe_require(plugin, config)
 	config = config or {} 
-	if not pcall(require_setup, plugin, config) then
+	local success, value = pcall(require_setup, plugin, config)
+	if success then
+		return value
+	else
 		print('Warning: Plugin ' .. plugin ' not found.')
 	end
 end
@@ -26,3 +29,5 @@ map('i', '<C-c>', '<cmd>PickColorInsert<cr>')
 -- zen mode config
 safe_require('zen-mode', {})
 
+-- which-key.nvim config
+safe_require('which-key', {})
