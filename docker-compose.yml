@@ -3,6 +3,7 @@ services:
     build: .
     volumes: 
       - ${HOME}:${HOME} 
+      - ./nvim/:/root/.config/nvim/
     stdin_open: true
     tty: true
     
