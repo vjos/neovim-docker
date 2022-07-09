@@ -35,10 +35,13 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
-Plug 'sunjon/shade.nvim'
+Plug 'vjos/shade.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'rebelot/kanagawa.nvim'
 call plug#end()
+
+" required for correct background window behaviour with shade and truezen
+set hidden
 
 " set the leader key (needs to be done before any leader key mappings are made)
 nnoremap <SPACE> <Nop>

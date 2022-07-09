@@ -37,7 +37,6 @@ local shade = safe_require('shade', {
 		toggle = '<Leader>s',
 	},
 })
-shade_enabled = true
 
 -- true zen config
 local true_zen = safe_require('true-zen', {
@@ -46,13 +45,12 @@ local true_zen = safe_require('true-zen', {
 	}
 })
 
--- todo; implement a way to switch shade on/off and PR to the shade.nvim plugin.
 if true_zen and shade then
 	true_zen.before_mode_ataraxis_on = function ()
-		shade.toggle()
+		shade.deactivate()
 	end
 	true_zen.after_mode_ataraxis_off = function ()
-		shade.toggle()
+		shade.activate()
 	end
 end
 
