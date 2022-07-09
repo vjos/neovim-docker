@@ -7,7 +7,9 @@ function map(mode, lhs, rhs, opts)
 end
 
 function require_setup(plugin, config)
-	require(plugin).setup(config)
+	local loaded = require(plugin)
+	loaded.setup(config)
+	return loaded
 end
 
 function safe_require(plugin, config)
@@ -17,6 +19,7 @@ function safe_require(plugin, config)
 		return value
 	else
 		print('Warning: Plugin ' .. plugin ' not found.')
+		return nil
 	end
 end
 
@@ -26,17 +29,45 @@ safe_require('color-picker', {})
 map('n', '<C-c>', '<cmd>PickColor<cr>')
 map('i', '<C-c>', '<cmd>PickColorInsert<cr>')
 
--- zen mode config
-safe_require('zen-mode', {})
-
--- which-key.nvim config
-safe_require('which-key', {})
-
--- shade.nvim config
-safe_require('shade', {
+-- shade.nvim config; must be loaded before zen plugins as it will break them if not disabled
+local shade = safe_require('shade', {
 	overlay_opacity = 25,
 	opacity_step = 1,
 	keys = {
 		toggle = '<Leader>s',
 	},
+})
+shade_enabled = true
+
+-- true zen config
+local true_zen = safe_require('true-zen', {
+	integrations = {
+		lightline = true,
+	}
+})
+
+-- todo; implement a way to switch shade on/off and PR to the shade.nvim plugin.
+if true_zen and shade then
+	true_zen.before_mode_ataraxis_on = function ()
+		shade.toggle()
+	end
+	true_zen.after_mode_ataraxis_off = function ()
+		shade.toggle()
+	end
+end
+
+map('n', '<Leader>z', '<cmd>TZAtaraxis<cr>')
+
+
+-- which-key.nvim config
+safe_require('which-key', {})
+
+-- indent-blankline setup
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+-- vim.opt.listchars:append("eol:↴")
+
+safe_require('indent_blankline', {
+    show_end_of_line = true,
+    space_char_blankline = " ",
 })

@@ -15,6 +15,7 @@ Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles
 
 " additional features outside of core editing
 Plug 'folke/zen-mode.nvim'
+Plug 'Pocco81/TrueZen.nvim'
 Plug 'ziontee113/color-picker.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -35,6 +36,7 @@ Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'sunjon/shade.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'rebelot/kanagawa.nvim'
 call plug#end()
 
