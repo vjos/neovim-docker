@@ -16,4 +16,4 @@ safe_require('nvim-tree', {
   },
 })
 
-map("n", "<Leader>t", ":NvimTreeFindFileToggle<CR>")
+map("n", "<Leader>f", ":NvimTreeFindFileToggle<CR>")

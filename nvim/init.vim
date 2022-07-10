@@ -14,12 +14,12 @@ Plug 'tpope/vim-surround' " adds text-object like interactions for quotes, paren
 Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles indentation
 
 " additional features outside of core editing
-Plug 'folke/zen-mode.nvim'
 Plug 'Pocco81/TrueZen.nvim'
 Plug 'ziontee113/color-picker.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'folke/which-key.nvim'
+Plug 'numtostr/FTerm.nvim'
 
 " handle code completion, linting and snippets
 Plug 'mattn/emmet-vim'
@@ -39,6 +39,8 @@ Plug 'vjos/shade.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'rebelot/kanagawa.nvim'
 call plug#end()
+
+set shell=/bin/bash
 
 " required for correct background window behaviour with shade and truezen
 set hidden

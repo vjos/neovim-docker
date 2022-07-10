@@ -69,3 +69,15 @@ safe_require('indent_blankline', {
     show_end_of_line = true,
     space_char_blankline = " ",
 })
+
+-- FTerm setup
+local term = safe_require('FTerm', {
+	cmd = '/bin/bash',
+	border = 'rounded',
+})
+
+vim.api.nvim_create_user_command('FTermOpen', term.open, {bang=true})
+vim.api.nvim_create_user_command('FTermClose', term.close, {bang=true})
+map('n', '<Leader>t', '<cmd>FTermOpen<cr>')
+map('t', '<C-t>', '<cmd>FTermClose<cr>')
+
