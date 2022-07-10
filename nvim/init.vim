@@ -37,6 +37,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'vjos/shade.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'folke/twilight.nvim'
 Plug 'rebelot/kanagawa.nvim'
 call plug#end()
 

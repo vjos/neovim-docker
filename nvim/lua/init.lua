@@ -38,6 +38,16 @@ local shade = safe_require('shade', {
 	},
 })
 
+-- twilight config; combined with zen so needs to be set up first
+local twi = safe_require('twilight', {
+	context = 0,
+	expand = {
+		"function_definition"
+	}
+})
+
+map('n', '<Leader>w', '<cmd>Twilight<cr>')
+
 -- true zen config
 local true_zen = safe_require('true-zen', {
 	integrations = {
@@ -45,17 +55,21 @@ local true_zen = safe_require('true-zen', {
 	}
 })
 
-if true_zen and shade then
+if true_zen and shade and twi then
 	true_zen.before_mode_ataraxis_on = function ()
 		shade.deactivate()
+		twi.disable()
+	end
+	true_zen.after_mode_ataraxis_on = function ()
+		twi.enable()
 	end
 	true_zen.after_mode_ataraxis_off = function ()
+		twi.disable()
 		shade.activate()
 	end
 end
 
 map('n', '<Leader>z', '<cmd>TZAtaraxis<cr>')
-
 
 -- which-key.nvim config
 safe_require('which-key', {})
