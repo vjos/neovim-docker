@@ -37,11 +37,44 @@ local shade = safe_require('shade', {
 	},
 })
 
+-- treesitter setup
+local configs = safe_require('nvim-treesitter.configs', {
+	ensure_installed = {
+        'python', 'c_sharp', 'lua', 'c', 'vim',
+    },
+    highlight = {
+        enable = true,
+    },
+    indent = {
+        enable = false,
+    },
+})
+
+-- indent-blankline setup
+vim.opt.list = true
+
+safe_require('indent_blankline', {
+    -- show_end_of_line = true,
+    -- space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true,
+    context_patterns = {
+	    "declaration", "expression", "pattern", "primary_expression",
+	    "statement", "switch_body"
+    },
+    filetype_exclude = {"NvimTree", "markdown"},
+})
+
 -- twilight config; combined with zen so needs to be set up first
 local twi = safe_require('twilight', {
 	context = 0,
 	expand = {
-		"function_definition"
+        "function",
+        "method",
+        "method_definition",
+        "table",
+        "if_statement",
+        "function_definition"
 	}
 })
 
@@ -72,34 +105,6 @@ map('n', '<Leader>z', '<cmd>TZAtaraxis<cr>')
 
 -- which-key.nvim config
 safe_require('which-key', {})
-
--- treesitter setup
-local configs = safe_require('nvim-treesitter.configs', {
-	ensure_installed = {
-        'python', 'c_sharp', 'lua', 'c', 'vim',
-    },
-    highlight = {
-        enable = true,
-    },
-    indent = {
-        enable = true,
-    },
-})
-
--- indent-blankline setup
-vim.opt.list = true
-
-safe_require('indent_blankline', {
-    -- show_end_of_line = true,
-    -- space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
-    context_patterns = {
-	    "declaration", "expression", "pattern", "primary_expression",
-	    "statement", "switch_body"
-    },
-    filetype_exclude = {"NvimTree"},
-})
 
 -- FTerm setup
 local term = safe_require('FTerm', {

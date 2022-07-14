@@ -31,6 +31,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 
 " visual plugins
+Plug 'RRethy/nvim-base16'
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-bufferline'
 Plug 'folke/twilight.nvim'
@@ -38,7 +39,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'maximbaz/lightline-ale'
-Plug 'rebelot/kanagawa.nvim'
 Plug 'vjos/shade.nvim'
 call plug#end()
 
@@ -124,6 +124,6 @@ inoremap <silent><expr> <Tab>
 let g:coc_snippet_next = "<Tab>"
 let g:coc_snippet_prev = "<S-Tab>"
 
-colorscheme kanagawa
+colorscheme base16-darcula
 highlight WinSeparator guibg=None
 
