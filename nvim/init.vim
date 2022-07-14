@@ -14,6 +14,7 @@ Plug 'tpope/vim-surround' " adds text-object like interactions for quotes, paren
 Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles indentation
 
 " additional features outside of core editing
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'Pocco81/TrueZen.nvim'
 Plug 'ziontee113/color-picker.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -58,6 +59,11 @@ lua require('nvim-tree-conf')
 filetype plugin indent on
 syntax enable
 set tgc
+
+" basic tab-spacing
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 " visual configs
 set laststatus=3 "global status line (see https://www.youtube.com/watch?v=jH5PNvJIa6o)"
