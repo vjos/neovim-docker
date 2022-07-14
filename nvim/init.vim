@@ -9,37 +9,37 @@ set number relativenumber
 " manage plugins with vim-plug
 call plug#begin()
 " core plugins to expand vim editing
+Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles indentation
 Plug 'tpope/vim-commentary' " toggle code commenting with selection+gc or gcc
 Plug 'tpope/vim-surround' " adds text-object like interactions for quotes, parens and tags [eg: cs'{]
-Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles indentation
 
 " additional features outside of core editing
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'Pocco81/TrueZen.nvim'
-Plug 'ziontee113/color-picker.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'folke/which-key.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'numtostr/FTerm.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ziontee113/color-picker.nvim'
 
 " handle code completion, linting and snippets
-Plug 'mattn/emmet-vim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'dense-analysis/ale'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
 Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 
 " visual plugins
 Plug 'ap/vim-css-color'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'bling/vim-bufferline'
-Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'vjos/shade.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'folke/twilight.nvim'
+Plug 'itchyny/lightline.vim'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'maximbaz/lightline-ale'
 Plug 'rebelot/kanagawa.nvim'
+Plug 'vjos/shade.nvim'
 call plug#end()
 
 set shell=/bin/bash
