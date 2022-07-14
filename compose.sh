@@ -1,5 +1,6 @@
 # kill running container
 docker-compose down
+docker pull archlinux:latest
 
 # handle command line args
 while [[ $# -gt 0 ]]; do
