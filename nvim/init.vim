@@ -39,7 +39,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'maximbaz/lightline-ale'
-Plug 'vjos/shade.nvim'
 call plug#end()
 
 set shell=/bin/bash

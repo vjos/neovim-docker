@@ -28,15 +28,6 @@ safe_require('color-picker', {})
 map('n', '<C-c>', '<cmd>PickColor<cr>')
 map('i', '<C-c>', '<cmd>PickColorInsert<cr>')
 
--- shade.nvim config; must be loaded before zen plugins as it will break them if not disabled
-local shade = safe_require('shade', {
-	overlay_opacity = 25,
-	opacity_step = 1,
-	keys = {
-		toggle = '<Leader>s',
-	},
-})
-
 -- treesitter setup
 local configs = safe_require('nvim-treesitter.configs', {
 	ensure_installed = {
@@ -87,9 +78,8 @@ local true_zen = safe_require('true-zen', {
 	}
 })
 
-if true_zen and shade and twi then
+if true_zen and twi then
 	true_zen.before_mode_ataraxis_on = function ()
-		shade.deactivate()
 		twi.disable()
 	end
 	true_zen.after_mode_ataraxis_on = function ()
@@ -97,7 +87,6 @@ if true_zen and shade and twi then
 	end
 	true_zen.after_mode_ataraxis_off = function ()
 		twi.disable()
-		shade.activate()
 	end
 end
 
@@ -114,6 +103,6 @@ local term = safe_require('FTerm', {
 
 vim.api.nvim_create_user_command('FTermOpen', term.open, {bang=true})
 vim.api.nvim_create_user_command('FTermClose', term.close, {bang=true})
-map('n', '<Leader>t', '<cmd>FTermOpen<cr>')
-map('t', '<C-t>', '<cmd>FTermClose<cr>')
+map('n', '<C-\\>', '<cmd>FTermOpen<cr>')
+map('t', '<C-\\>', '<cmd>FTermClose<cr>')
 
