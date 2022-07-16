@@ -39,6 +39,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'maximbaz/lightline-ale'
+Plug 'unblevable/quick-scope'
 call plug#end()
 
 set shell=/bin/bash
@@ -122,6 +123,9 @@ inoremap <silent><expr> <Tab>
 
 let g:coc_snippet_next = "<Tab>"
 let g:coc_snippet_prev = "<S-Tab>"
+
+" quick-scope config
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 colorscheme base16-darcula
 highlight WinSeparator guibg=None
