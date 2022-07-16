@@ -1,6 +1,5 @@
 FROM archlinux:latest 
 
-# generic dependencies
 RUN pacman -Syu --noconfirm
 RUN pacman -S curl git neovim --noconfirm
 
@@ -9,13 +8,16 @@ RUN pacman -S nodejs npm --noconfirm
 
 # python deps 
 RUN pacman -S python python-pip --noconfirm 
-RUN python -m pip install --user --upgrade pynvim
+RUN python -m pip install --upgrade pynvim neovim-remote
 
 # go deps
 RUN pacman -S go --noconfirm
 
 # C# deps
 RUN pacman -S mono mono-msbuild --noconfirm
+
+# Treesitter deps
+RUN pacman -S gcc --noconfirm
 
 # install plug.vim 
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \

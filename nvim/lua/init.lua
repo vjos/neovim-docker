@@ -23,20 +23,53 @@ function safe_require(plugin, config)
 	end
 end
 
-
 -- colour picker config
 safe_require('color-picker', {})
 map('n', '<C-c>', '<cmd>PickColor<cr>')
 map('i', '<C-c>', '<cmd>PickColorInsert<cr>')
 
--- shade.nvim config; must be loaded before zen plugins as it will break them if not disabled
-local shade = safe_require('shade', {
-	overlay_opacity = 25,
-	opacity_step = 1,
-	keys = {
-		toggle = '<Leader>s',
-	},
+-- treesitter setup
+local configs = safe_require('nvim-treesitter.configs', {
+	ensure_installed = {
+        'python', 'c_sharp', 'lua', 'c', 'vim',
+    },
+    highlight = {
+        enable = true,
+    },
+    indent = {
+        enable = false,
+    },
 })
+
+-- indent-blankline setup
+vim.opt.list = true
+
+safe_require('indent_blankline', {
+    -- show_end_of_line = true,
+    -- space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true,
+    context_patterns = {
+	    "declaration", "expression", "pattern", "primary_expression",
+	    "statement", "switch_body"
+    },
+    filetype_exclude = {"NvimTree", "markdown"},
+})
+
+-- twilight config; combined with zen so needs to be set up first
+local twi = safe_require('twilight', {
+	context = 0,
+	expand = {
+        "function",
+        "method",
+        "method_definition",
+        "table",
+        "if_statement",
+        "function_definition"
+	}
+})
+
+map('n', '<Leader>w', '<cmd>Twilight<cr>')
 
 -- true zen config
 local true_zen = safe_require('true-zen', {
@@ -45,27 +78,31 @@ local true_zen = safe_require('true-zen', {
 	}
 })
 
-if true_zen and shade then
+if true_zen and twi then
 	true_zen.before_mode_ataraxis_on = function ()
-		shade.deactivate()
+		twi.disable()
+	end
+	true_zen.after_mode_ataraxis_on = function ()
+		twi.enable()
 	end
 	true_zen.after_mode_ataraxis_off = function ()
-		shade.activate()
+		twi.disable()
 	end
 end
 
 map('n', '<Leader>z', '<cmd>TZAtaraxis<cr>')
 
-
 -- which-key.nvim config
 safe_require('which-key', {})
 
--- indent-blankline setup
-vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
--- vim.opt.listchars:append("eol:↴")
-
-safe_require('indent_blankline', {
-    show_end_of_line = true,
-    space_char_blankline = " ",
+-- FTerm setup
+local term = safe_require('FTerm', {
+	cmd = '/bin/bash',
+	border = 'rounded',
 })
+
+vim.api.nvim_create_user_command('FTermOpen', term.open, {bang=true})
+vim.api.nvim_create_user_command('FTermClose', term.close, {bang=true})
+map('n', '<C-\\>', '<cmd>FTermOpen<cr>')
+map('t', '<C-\\>', '<cmd>FTermClose<cr>')
+

@@ -9,36 +9,40 @@ set number relativenumber
 " manage plugins with vim-plug
 call plug#begin()
 " core plugins to expand vim editing
+Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles indentation
 Plug 'tpope/vim-commentary' " toggle code commenting with selection+gc or gcc
 Plug 'tpope/vim-surround' " adds text-object like interactions for quotes, parens and tags [eg: cs'{]
-Plug 'jiangmiao/auto-pairs' " inserts a matching closer for above pairs, handles indentation
 
 " additional features outside of core editing
-Plug 'folke/zen-mode.nvim'
 Plug 'Pocco81/TrueZen.nvim'
-Plug 'ziontee113/color-picker.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'folke/which-key.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'numtostr/FTerm.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ziontee113/color-picker.nvim'
 
 " handle code completion, linting and snippets
-Plug 'mattn/emmet-vim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'dense-analysis/ale'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
 Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 
 " visual plugins
+Plug 'RRethy/nvim-base16'
 Plug 'ap/vim-css-color'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'bling/vim-bufferline'
+Plug 'folke/twilight.nvim'
 Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'vjos/shade.nvim'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'rebelot/kanagawa.nvim'
+Plug 'maximbaz/lightline-ale'
+Plug 'unblevable/quick-scope'
 call plug#end()
+
+set shell=/bin/bash
 
 " required for correct background window behaviour with shade and truezen
 set hidden
@@ -55,6 +59,11 @@ lua require('nvim-tree-conf')
 filetype plugin indent on
 syntax enable
 set tgc
+
+" basic tab-spacing
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 " visual configs
 set laststatus=3 "global status line (see https://www.youtube.com/watch?v=jH5PNvJIa6o)"
@@ -107,7 +116,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-Y>" :
       \ <SID>check_back_space() ? "\<Tab>" :
@@ -116,6 +124,9 @@ inoremap <silent><expr> <Tab>
 let g:coc_snippet_next = "<Tab>"
 let g:coc_snippet_prev = "<S-Tab>"
 
-colorscheme kanagawa
+" quick-scope config
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+colorscheme base16-darcula
 highlight WinSeparator guibg=None
 

@@ -36,7 +36,7 @@ vim:
   handle matched surroundings
 ### Completion
 Coc is a completion ecosystem. See **Configuration** to add more extensions.
-Use <C-n> and <C-p> to navigate completion menus, and <RETURN>/<TAB> to choose
+Use <C-n> and <C-p> to navigate completion menus, and <TAB> to choose
 a suggestion or expand a snippet. 
 See the Dockerfile for preconfigured extensions.
 
